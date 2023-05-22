@@ -114,7 +114,7 @@ bool xpt2046_read(lv_indev_drv_t * drv, lv_indev_data_t * data)
     }
 
     data->point.x = x;
-    data->point.y = 320 - y;
+    data->point.y = 320 - y; // for inverse 
     data->state = valid == false ? LV_INDEV_STATE_REL : LV_INDEV_STATE_PR;
 
     return false;
