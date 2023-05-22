@@ -1,2 +1,3 @@
-# ESP32_LVGL
-LVGL9.0 runs in ESP32 with ili9341 screen
+For esp32 with ILI9341
+lvgl9.0
+esp-idf:4.4/release
