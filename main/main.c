@@ -4,7 +4,6 @@
 #include "freertos/semphr.h"
 #include "freertos/queue.h"
 // #include "lv_examples/src/lv_demo_widgets/lv_demo_widgets.h"
-// #include "lv_examples/src/lv_demo_benchmark/lv_demo_benchmark.h"
 //#include "lv_demos.h"
 
 //#include "lvgl_helpers.h"

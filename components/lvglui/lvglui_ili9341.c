@@ -117,7 +117,6 @@ void gui_task(void *arg)
 	ESP_ERROR_CHECK(esp_timer_start_periodic(periodic_timer, 10 * 1000));
     //lv_demo_stress();
 //    lv_demo_widgets();
-    //lv_demo_benchmark(LV_DEMO_BENCHMARK_MODE_RENDER_AND_DRIVER);
     // lv_demo_flex_layout();
     // lv_demo_keypad_encoder();
     // lv_example_qrcode_1();

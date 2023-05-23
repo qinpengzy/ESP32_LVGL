@@ -15,10 +15,6 @@ extern "C" {
  *********************/
 #include "../lvgl.h"
 
-#if LV_USE_DEMO_BENCHMARK
-#include "benchmark/lv_demo_benchmark.h"
-#endif
-
 #if LV_USE_DEMO_KEYPAD_AND_ENCODER
 #include "keypad_encoder/lv_demo_keypad_encoder.h"
 #endif
