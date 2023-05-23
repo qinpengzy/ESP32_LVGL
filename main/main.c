@@ -6,10 +6,10 @@
 // #include "lv_examples/src/lv_demo_widgets/lv_demo_widgets.h"
 // #include "lv_examples/src/lv_demo_music/lv_demo_music.h"
 // #include "lv_examples/src/lv_demo_benchmark/lv_demo_benchmark.h"
-#include "lv_demos.h"
+//#include "lv_demos.h"
 
-#include "lvgl_helpers.h"
-#include "esp_freertos_hooks.h"
+//#include "lvgl_helpers.h"
+//#include "esp_freertos_hooks.h"
 
 #include "lvglui_ili9341.h"
 
@@ -20,6 +20,7 @@
 #include "esp_event.h"
 #include "esp_netif.h"
 
+#include "freertos/event_groups.h"
 
 #include "lwip/sockets.h"
 #include "lwip/dns.h"
@@ -27,6 +28,9 @@
 
 #include "esp_log.h"
 #include "mqtt_client.h"
+
+static EventGroupHandle_t wifi_event_group;
+const static int CONNECTED_BIT = BIT0;
 
 //MQTT
 static const char *TAG = "MQTT_EXAMPLE";
@@ -141,7 +145,47 @@ static void mqtt_app_start(void)
     esp_mqtt_client_start(client);
 }
 
+static esp_err_t wifi_event_handler(void *ctx, system_event_t *event)
+{
+    switch (event->event_id) {
+        case SYSTEM_EVENT_STA_START:
+            esp_wifi_connect();
+            break;
+        case SYSTEM_EVENT_STA_GOT_IP:
+            xEventGroupSetBits(wifi_event_group, CONNECTED_BIT);
 
+            break;
+        case SYSTEM_EVENT_STA_DISCONNECTED:
+            esp_wifi_connect();
+            xEventGroupClearBits(wifi_event_group, CONNECTED_BIT);
+            break;
+        default:
+            break;
+    }
+    return ESP_OK;
+}
+
+static void wifi_init(void)
+{
+    tcpip_adapter_init();
+    wifi_event_group = xEventGroupCreate();
+    ESP_ERROR_CHECK(esp_event_loop_init(wifi_event_handler, NULL));
+    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+    ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+    ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));
+    wifi_config_t wifi_config = {
+        .sta = {
+            .ssid = CONFIG_WIFI_SSID,
+            .password = CONFIG_WIFI_PASSWORD,
+        },
+    };
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+    ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config));
+    ESP_LOGI(TAG, "start the WIFI SSID:[%s] password:[%s]", CONFIG_WIFI_SSID, "******");
+    ESP_ERROR_CHECK(esp_wifi_start());
+    ESP_LOGI(TAG, "Waiting for wifi");
+    xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT, false, true, portMAX_DELAY);
+}
 
 
 
@@ -153,30 +197,30 @@ void app_main(void)
    xTaskCreatePinnedToCore(gui_task, "gui task", 1024 * 4, NULL, 1, NULL, 0);
 
 
-//    //MQTT
-//     ESP_LOGI(TAG, "[APP] Startup..");
-//     ESP_LOGI(TAG, "[APP] Free memory: %" PRIu32 " bytes", esp_get_free_heap_size());
-//     ESP_LOGI(TAG, "[APP] IDF version: %s", esp_get_idf_version());
+   //MQTT
+    ESP_LOGI(TAG, "[APP] Startup..");
+    ESP_LOGI(TAG, "[APP] Free memory: %" PRIu32 " bytes", esp_get_free_heap_size());
+    ESP_LOGI(TAG, "[APP] IDF version: %s", esp_get_idf_version());
 
-//     esp_log_level_set("*", ESP_LOG_INFO);
-//     esp_log_level_set("mqtt_client", ESP_LOG_VERBOSE);
-//     esp_log_level_set("MQTT_EXAMPLE", ESP_LOG_VERBOSE);
-//     esp_log_level_set("TRANSPORT_BASE", ESP_LOG_VERBOSE);
-//     esp_log_level_set("esp-tls", ESP_LOG_VERBOSE);
-//     esp_log_level_set("TRANSPORT", ESP_LOG_VERBOSE);
-//     esp_log_level_set("outbox", ESP_LOG_VERBOSE);
+    esp_log_level_set("*", ESP_LOG_INFO);
+    esp_log_level_set("mqtt_client", ESP_LOG_VERBOSE);
+    esp_log_level_set("MQTT_EXAMPLE", ESP_LOG_VERBOSE);
+    esp_log_level_set("TRANSPORT_BASE", ESP_LOG_VERBOSE);
+    esp_log_level_set("esp-tls", ESP_LOG_VERBOSE);
+    esp_log_level_set("TRANSPORT", ESP_LOG_VERBOSE);
+    esp_log_level_set("outbox", ESP_LOG_VERBOSE);
 
-//     ESP_ERROR_CHECK(nvs_flash_init());
-//     ESP_ERROR_CHECK(esp_netif_init());
-//     ESP_ERROR_CHECK(esp_event_loop_create_default());
+    ESP_ERROR_CHECK(nvs_flash_init());
+    ESP_ERROR_CHECK(esp_netif_init());
+    ESP_ERROR_CHECK(esp_event_loop_create_default());
 
-//     /* This helper function configures Wi-Fi or Ethernet, as selected in menuconfig.
-//      * Read "Establishing Wi-Fi or Ethernet Connection" section in
-//      * examples/protocols/README.md for more information about this function.
-//      */
-//     //ESP_ERROR_CHECK(example_connect());
+    /* This helper function configures Wi-Fi or Ethernet, as selected in menuconfig.
+     * Read "Establishing Wi-Fi or Ethernet Connection" section in
+     * examples/protocols/README.md for more information about this function.
+     */
+    wifi_init();
 
-//     mqtt_app_start();
+    mqtt_app_start();
 
 
    while(1){
