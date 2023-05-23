@@ -3,5 +3,7 @@
     "files.associations": {
         "lvgl_helpers.h": "c",
         "lv_demos.h": "c"
-    }
+    },
+    "idf.flashType": "UART",
+    "idf.port": "/dev/cu.usbserial-0001"
 }
