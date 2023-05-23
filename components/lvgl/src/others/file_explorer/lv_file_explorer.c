@@ -88,9 +88,6 @@ void lv_file_explorer_set_quick_access_path(lv_obj_t * obj, lv_file_explorer_dir
         case LV_EXPLORER_HOME_DIR:
             dir_str = &(explorer->home_dir);
             break;
-        case LV_EXPLORER_MUSIC_DIR:
-            dir_str = &(explorer->music_dir);
-            break;
         case LV_EXPLORER_PICTURES_DIR:
             dir_str = &(explorer->pictures_dir);
             break;
@@ -252,7 +249,6 @@ static void lv_file_explorer_constructor(const lv_obj_class_t * class_p, lv_obj_
     explorer->home_dir = NULL;
     explorer->video_dir = NULL;
     explorer->pictures_dir = NULL;
-    explorer->music_dir = NULL;
     explorer->docs_dir = NULL;
     explorer->fs_dir = NULL;
 #endif
@@ -445,9 +441,6 @@ static void quick_access_event_handler(lv_event_t * e)
         }
         else if((strcmp(label_text, LV_SYMBOL_IMAGE " Pictures") == 0)) {
             path = &(explorer->pictures_dir);
-        }
-        else if((strcmp(label_text, LV_SYMBOL_AUDIO " Music") == 0)) {
-            path = &(explorer->music_dir);
         }
         else if((strcmp(label_text, LV_SYMBOL_FILE "  Documents") == 0)) {
             path = &(explorer->docs_dir);

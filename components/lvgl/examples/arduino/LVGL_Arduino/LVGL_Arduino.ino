@@ -127,7 +127,6 @@ void setup()
     lv_demo_widgets();            // OK
     // lv_demo_benchmark();          // OK
     // lv_demo_keypad_encoder();     // works, but I haven't an encoder
-    // lv_demo_music();              // NOK
     // lv_demo_printer();
     // lv_demo_stress();             // seems to be OK
 #endif

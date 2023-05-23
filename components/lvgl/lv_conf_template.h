@@ -766,16 +766,6 @@
 /*Stress test for LVGL*/
 #define LV_USE_DEMO_STRESS 0
 
-/*Music player demo*/
-#define LV_USE_DEMO_MUSIC 0
-#if LV_USE_DEMO_MUSIC
-    #define LV_DEMO_MUSIC_SQUARE    0
-    #define LV_DEMO_MUSIC_LANDSCAPE 0
-    #define LV_DEMO_MUSIC_ROUND     0
-    #define LV_DEMO_MUSIC_LARGE     0
-    #define LV_DEMO_MUSIC_AUTO_PLAY 0
-#endif
-
 /*Flex layout demo*/
 #define LV_USE_DEMO_FLEX_LAYOUT 0
 

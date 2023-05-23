@@ -9,6 +9,9 @@
 #include "esp_freertos_hooks.h"
 #include "esp_log.h"
 
+
+#include "ui/ui.h"
+
 //screen
 static void lv_tick_task(void *arg)
 {
@@ -112,14 +115,17 @@ void gui_task(void *arg)
 	esp_timer_handle_t periodic_timer;
 	ESP_ERROR_CHECK(esp_timer_create(&periodic_timer_args, &periodic_timer));
 	ESP_ERROR_CHECK(esp_timer_start_periodic(periodic_timer, 10 * 1000));
-//    lv_demo_stress();
+    //lv_demo_stress();
 //    lv_demo_widgets();
-//    lv_demo_music();
     //lv_demo_benchmark(LV_DEMO_BENCHMARK_MODE_RENDER_AND_DRIVER);
     // lv_demo_flex_layout();
     // lv_demo_keypad_encoder();
     // lv_example_qrcode_1();
-    lv_example_ime_pinyin_1();
+    //lv_example_ime_pinyin_1();
+    ui_init();
+
+
+
    while (1)
    {
       /* Delay 1 tick (assumes FreeRTOS tick is 10ms */

@@ -23,10 +23,6 @@ extern "C" {
 #include "keypad_encoder/lv_demo_keypad_encoder.h"
 #endif
 
-#if LV_USE_DEMO_MUSIC
-#include "music/lv_demo_music.h"
-#endif
-
 #if LV_USE_DEMO_STRESS
 #include "stress/lv_demo_stress.h"
 #endif

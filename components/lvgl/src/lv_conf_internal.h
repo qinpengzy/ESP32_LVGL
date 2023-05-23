@@ -2523,52 +2523,6 @@
     #endif
 #endif
 
-/*Music player demo*/
-#ifndef LV_USE_DEMO_MUSIC
-    #ifdef CONFIG_LV_USE_DEMO_MUSIC
-        #define LV_USE_DEMO_MUSIC CONFIG_LV_USE_DEMO_MUSIC
-    #else
-        #define LV_USE_DEMO_MUSIC 0
-    #endif
-#endif
-#if LV_USE_DEMO_MUSIC
-    #ifndef LV_DEMO_MUSIC_SQUARE
-        #ifdef CONFIG_LV_DEMO_MUSIC_SQUARE
-            #define LV_DEMO_MUSIC_SQUARE CONFIG_LV_DEMO_MUSIC_SQUARE
-        #else
-            #define LV_DEMO_MUSIC_SQUARE    0
-        #endif
-    #endif
-    #ifndef LV_DEMO_MUSIC_LANDSCAPE
-        #ifdef CONFIG_LV_DEMO_MUSIC_LANDSCAPE
-            #define LV_DEMO_MUSIC_LANDSCAPE CONFIG_LV_DEMO_MUSIC_LANDSCAPE
-        #else
-            #define LV_DEMO_MUSIC_LANDSCAPE 0
-        #endif
-    #endif
-    #ifndef LV_DEMO_MUSIC_ROUND
-        #ifdef CONFIG_LV_DEMO_MUSIC_ROUND
-            #define LV_DEMO_MUSIC_ROUND CONFIG_LV_DEMO_MUSIC_ROUND
-        #else
-            #define LV_DEMO_MUSIC_ROUND     0
-        #endif
-    #endif
-    #ifndef LV_DEMO_MUSIC_LARGE
-        #ifdef CONFIG_LV_DEMO_MUSIC_LARGE
-            #define LV_DEMO_MUSIC_LARGE CONFIG_LV_DEMO_MUSIC_LARGE
-        #else
-            #define LV_DEMO_MUSIC_LARGE     0
-        #endif
-    #endif
-    #ifndef LV_DEMO_MUSIC_AUTO_PLAY
-        #ifdef CONFIG_LV_DEMO_MUSIC_AUTO_PLAY
-            #define LV_DEMO_MUSIC_AUTO_PLAY CONFIG_LV_DEMO_MUSIC_AUTO_PLAY
-        #else
-            #define LV_DEMO_MUSIC_AUTO_PLAY 0
-        #endif
-    #endif
-#endif
-
 /*Flex layout demo*/
 #ifndef LV_USE_DEMO_FLEX_LAYOUT
     #ifdef CONFIG_LV_USE_DEMO_FLEX_LAYOUT
