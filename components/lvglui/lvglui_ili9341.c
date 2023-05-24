@@ -116,9 +116,6 @@ void gui_task(void *arg)
 	ESP_ERROR_CHECK(esp_timer_create(&periodic_timer_args, &periodic_timer));
 	ESP_ERROR_CHECK(esp_timer_start_periodic(periodic_timer, 10 * 1000));
     //lv_demo_stress();
-//    lv_demo_widgets();
-    // lv_demo_flex_layout();
-    // lv_demo_keypad_encoder();
     // lv_example_qrcode_1();
     //lv_example_ime_pinyin_1();
     ui_init();

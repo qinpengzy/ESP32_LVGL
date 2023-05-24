@@ -189,7 +189,6 @@ PACKNAME=`cat PackName.txt`
 rm -rf PackName.txt
 
 echo remove unrequired files and folders...
-rm -rf $PACK_BUILD/demos/keypad_encoder
 rm -rf $PACK_BUILD/demos/stress
 rm -rf $PACK_BUILD/demos/widgets/screenshot1.gif
 

@@ -747,11 +747,6 @@
  * DEMO USAGE
  ====================*/
 
-/*Show some widget. It might be required to increase `LV_MEM_SIZE` */
-#define LV_USE_DEMO_WIDGETS 0
-#if LV_USE_DEMO_WIDGETS
-    #define LV_DEMO_WIDGETS_SLIDESHOW 0
-#endif
 
 /*Demonstrate the usage of encoder and keyboard*/
 #define LV_USE_DEMO_KEYPAD_AND_ENCODER 0
@@ -759,9 +754,6 @@
 
 /*Stress test for LVGL*/
 #define LV_USE_DEMO_STRESS 0
-
-/*Flex layout demo*/
-#define LV_USE_DEMO_FLEX_LAYOUT 0
 
 /*--END OF LV_CONF_H--*/
 

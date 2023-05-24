@@ -2468,24 +2468,6 @@
  * DEMO USAGE
  ====================*/
 
-/*Show some widget. It might be required to increase `LV_MEM_SIZE` */
-#ifndef LV_USE_DEMO_WIDGETS
-    #ifdef CONFIG_LV_USE_DEMO_WIDGETS
-        #define LV_USE_DEMO_WIDGETS CONFIG_LV_USE_DEMO_WIDGETS
-    #else
-        #define LV_USE_DEMO_WIDGETS 0
-    #endif
-#endif
-#if LV_USE_DEMO_WIDGETS
-    #ifndef LV_DEMO_WIDGETS_SLIDESHOW
-        #ifdef CONFIG_LV_DEMO_WIDGETS_SLIDESHOW
-            #define LV_DEMO_WIDGETS_SLIDESHOW CONFIG_LV_DEMO_WIDGETS_SLIDESHOW
-        #else
-            #define LV_DEMO_WIDGETS_SLIDESHOW 0
-        #endif
-    #endif
-#endif
-
 /*Demonstrate the usage of encoder and keyboard*/
 #ifndef LV_USE_DEMO_KEYPAD_AND_ENCODER
     #ifdef CONFIG_LV_USE_DEMO_KEYPAD_AND_ENCODER
@@ -2503,16 +2485,6 @@
         #define LV_USE_DEMO_STRESS 0
     #endif
 #endif
-
-/*Flex layout demo*/
-#ifndef LV_USE_DEMO_FLEX_LAYOUT
-    #ifdef CONFIG_LV_USE_DEMO_FLEX_LAYOUT
-        #define LV_USE_DEMO_FLEX_LAYOUT CONFIG_LV_USE_DEMO_FLEX_LAYOUT
-    #else
-        #define LV_USE_DEMO_FLEX_LAYOUT 0
-    #endif
-#endif
-
 
 
 /*----------------------------------
