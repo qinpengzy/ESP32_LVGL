@@ -18,9 +18,10 @@ extern "C" {
 void ui_Screen1_screen_init(void);
 extern lv_obj_t *ui_Screen1;
 extern lv_obj_t *ui_Label2;
-extern lv_obj_t *ui_Button2;
-extern lv_obj_t *ui_Arc1;
+extern lv_obj_t *ui_Image2;
 extern lv_obj_t *ui____initial_actions0;
+
+LV_IMG_DECLARE( ui_img_aa_2_png);   // assets/aa 2.png
 
 void ui_init(void);
 

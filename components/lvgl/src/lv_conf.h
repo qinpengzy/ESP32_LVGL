@@ -750,7 +750,7 @@
 #define LV_USE_DEMO_KEYPAD_AND_ENCODER 1
 
 /*Stress test for LVGL*/
-#define LV_USE_DEMO_STRESS 1
+#define LV_USE_DEMO_STRESS 0 //last change for lvgl demo
 
 /*--END OF LV_CONF_H--*/
 
