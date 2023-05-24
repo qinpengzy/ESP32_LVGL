@@ -9,7 +9,31 @@ menu "Example Configuration"
     config BROKER_URL_FROM_STDIN
         bool
         default y if BROKER_URL = "FROM_STDIN"
-        
+    
+    config MQTT_USERNAME
+        string "MQTT username"
+        default "mqttusername"
+        help
+            MQTT username.
+    
+    config MQTT_PASSWORD
+        string "MQTT password"
+        default "mqttpassword"
+        help
+            MQTT password.
+    
+    config MQTT_SERVER_PORT
+        int "MQTT server port"
+        default 1883
+        help
+            MQTT server port number.
+
+    config MQTT_CLIENT_ID
+        string "MQTT Client ID"
+        default "myclientid"
+        help
+            MQTT server Client ID.
+    
     config WIFI_SSID
         string "WiFi SSID"
         default "myssid"
